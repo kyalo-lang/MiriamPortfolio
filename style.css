@@ -310,22 +310,37 @@ body.dark-mode .hero-left { background: rgba(8, 12, 22, 0.85); }
 /* ── SERVICES ── */
 .services-page {
   position: relative;
-  overflow: hidden;
+  min-height: 100vh;
 }
-.animated-bg {
-  position: absolute;
-  top: -50%; left: -50%; width: 200%; height: 200%;
-  background: linear-gradient(45deg, var(--bg), var(--slate), var(--terra), var(--sand));
-  background-size: 400% 400%;
-  animation: gradientBG 20s ease infinite;
-  opacity: 0.15;
-  z-index: 0;
+.services-bg {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: -1;
+  overflow: hidden;
   pointer-events: none;
 }
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.services-bg-img {
+  position: absolute;
+  inset: -10%;
+  width: 120%;
+  height: 120%;
+  background-image: url('images/hero_bridge.png');
+  background-size: cover;
+  background-position: center;
+  animation: bgPan 30s linear infinite alternate;
+}
+.services-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 244, 238, 0.75); /* matches var(--bg-light) */
+  backdrop-filter: blur(3px);
+}
+body.dark-mode .services-bg-overlay {
+  background: rgba(15, 23, 42, 0.85); /* matches var(--bg-dark) */
+}
+@keyframes bgPan {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.05) translate(-2%, -1%); }
 }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
 .service-card {
