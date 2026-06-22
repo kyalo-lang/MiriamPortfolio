@@ -113,14 +113,37 @@ nav {
 .hero {
   display: grid; grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - 70px);
-}
-.hero-left {
-  background: var(--slate-light); /* Always keep dark slate for hero left for contrast with hero img */
   position: relative; overflow: hidden;
+}
+.hero-bg-slideshow {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+}
+.hero-bg-slideshow .slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0;
+  animation: slideFade 15s infinite ease-in-out;
+}
+.hero-bg-slideshow .slide-1 { background-image: url('images/hero.png'); animation-delay: 0s; }
+.hero-bg-slideshow .slide-2 { background-image: url('images/hero_bridge.png'); animation-delay: 5s; }
+.hero-bg-slideshow .slide-3 { background-image: url('images/hero_globe.png'); animation-delay: 10s; }
+@keyframes slideFade {
+  0% { opacity: 0; transform: scale(1.05); }
+  5% { opacity: 0.6; }
+  33% { opacity: 0.6; transform: scale(1); }
+  38% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.hero-left {
+  background: rgba(27, 42, 59, 0.75); /* Semi-transparent glass */
+  backdrop-filter: blur(10px);
+  position: relative; z-index: 1; /* Above slideshow */
   display: flex; flex-direction: column;
   justify-content: center; padding: 4rem 3.5rem;
 }
-body.dark-mode .hero-left { background: #080C16; }
+body.dark-mode .hero-left { background: rgba(8, 12, 22, 0.85); }
 
 .hero-left::before {
   content: '';
@@ -161,17 +184,10 @@ body.dark-mode .hero-left { background: #080C16; }
 .hero-cta:hover { background: #a8623a; transform: translateY(-2px); }
 
 .hero-right {
-  background: url('images/hero.png') center/cover no-repeat;
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   padding: 4rem 3.5rem; text-align: center;
-  position: relative;
-}
-.hero-right::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--bg) 0%, transparent 40%),
-              rgba(0,0,0,0.3); /* gradient to blend */
-  z-index: 1;
+  position: relative; z-index: 1;
 }
 .hero-right-content {
   position: relative; z-index: 2;
