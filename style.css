@@ -308,6 +308,25 @@ body.dark-mode .hero-left { background: rgba(8, 12, 22, 0.85); }
 .skill-list li::before { content: '›'; color: var(--terra); font-size: 1.2rem; }
 
 /* ── SERVICES ── */
+.services-page {
+  position: relative;
+  overflow: hidden;
+}
+.animated-bg {
+  position: absolute;
+  top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(45deg, var(--bg), var(--slate), var(--terra), var(--sand));
+  background-size: 400% 400%;
+  animation: gradientBG 20s ease infinite;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
 .service-card {
   padding: 2.5rem; border: 1px solid var(--border);
