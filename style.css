@@ -307,6 +307,22 @@ body.dark-mode .hero-left { background: rgba(8, 12, 22, 0.85); }
 }
 .skill-list li::before { content: '›'; color: var(--terra); font-size: 1.2rem; }
 
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 2rem; margin-top: 2rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: 2.5rem; }
+.timeline-dot { position: absolute; left: -2.4rem; top: 0.3rem; width: 14px; height: 14px; border-radius: 50%; background: var(--terra); border: 3px solid var(--bg); box-shadow: 0 0 0 2px var(--terra); }
+.timeline-date { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; color: var(--terra); margin-bottom: 0.5rem; text-transform: uppercase; }
+.timeline-title { font-family: 'Playfair Display', serif; font-size: 1.25rem; color: var(--slate); margin-bottom: 0.6rem; font-weight: 700; }
+.timeline-desc { font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
+
+/* ── CERT GRID ── */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.cert-card { padding: 1.5rem; border: 1px solid var(--border); background: var(--white); border-radius: 4px; transition: transform 0.3s, border-color 0.3s; }
+.cert-card:hover { transform: translateY(-3px); border-color: var(--terra); }
+.cert-name { font-size: 1rem; font-weight: 600; color: var(--slate); margin-bottom: 0.5rem; }
+.cert-desc { font-size: 0.85rem; color: var(--muted); }
+
 /* ── SERVICES ── */
 .services-page {
   position: relative;
